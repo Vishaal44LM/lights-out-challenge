@@ -1,3 +1,3 @@
-Set your best reaction time ⬇️
+Set your best reaction time at ⬇️
 
-Live at : https://lights-out-challenge-two.vercel.app
+https://lights-out-challenge-two.vercel.app
