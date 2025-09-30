@@ -7,26 +7,26 @@ interface StartLightsProps {
 
 const StartLights = ({ activeLights, allOut }: StartLightsProps) => {
   return (
-    <div className="flex justify-center gap-4 md:gap-6 mb-12">
-      {[1, 2, 3, 4, 5].map((light) => (
+    <div className="flex justify-center gap-3 md:gap-4 mb-12">
+      {[1, 2, 3, 4, 5].map((panel) => (
         <div
-          key={light}
-          className={cn(
-            "w-16 h-24 md:w-20 md:h-32 rounded-2xl border-4 transition-all duration-300",
-            "flex items-center justify-center",
-            activeLights >= light && !allOut
-              ? "bg-primary border-primary light-glow-active"
-              : "bg-secondary/50 border-muted"
-          )}
+          key={panel}
+          className="w-20 md:w-24 bg-black/90 rounded-3xl border-4 border-gray-800 p-3 md:p-4 shadow-2xl"
         >
-          <div
-            className={cn(
-              "w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-300",
-              activeLights >= light && !allOut
-                ? "bg-primary shadow-[0_0_30px_rgba(220,0,0,0.8)]"
-                : "bg-muted/30"
-            )}
-          />
+          <div className="flex flex-col gap-2 md:gap-3">
+            {[1, 2].map((lightRow) => (
+              <div
+                key={lightRow}
+                className={cn(
+                  "w-full aspect-square rounded-full transition-all duration-300",
+                  "border-2",
+                  activeLights >= panel && !allOut
+                    ? "bg-red-600 border-red-500 shadow-[0_0_20px_rgba(220,0,0,0.9),0_0_40px_rgba(220,0,0,0.6)]"
+                    : "bg-gray-900 border-gray-800"
+                )}
+              />
+            ))}
+          </div>
         </div>
       ))}
     </div>

@@ -1,5 +1,6 @@
 import { Trophy } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { formatTime } from "@/lib/formatTime";
 
 interface ResultsTableProps {
   attempts: number[];
@@ -25,7 +26,7 @@ const ResultsTable = ({ attempts, bestTime }: ResultsTableProps) => {
             <span className="text-muted-foreground">Attempt {attempts.length - index}</span>
             <div className="flex items-center gap-2">
               <span
-                className={`font-bold ${
+                className={`font-bold font-mono ${
                   time === best
                     ? "text-accent"
                     : time === worst
@@ -33,7 +34,7 @@ const ResultsTable = ({ attempts, bestTime }: ResultsTableProps) => {
                     : "text-foreground"
                 }`}
               >
-                {time} ms
+                {formatTime(time)}
               </span>
               {time === best && <Trophy className="w-5 h-5 text-accent" />}
             </div>
@@ -46,7 +47,7 @@ const ResultsTable = ({ attempts, bestTime }: ResultsTableProps) => {
             <span className="text-foreground font-semibold">Personal Best</span>
             <div className="flex items-center gap-2">
               <Trophy className="w-6 h-6 text-accent" />
-              <span className="text-2xl font-bold text-accent">{bestTime} ms</span>
+              <span className="text-2xl font-bold text-accent font-mono">{formatTime(bestTime)}</span>
             </div>
           </div>
         </div>

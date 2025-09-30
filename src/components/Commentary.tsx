@@ -1,5 +1,6 @@
 import { AlertCircle, CheckCircle, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { formatTime } from "@/lib/formatTime";
 
 interface CommentaryProps {
   time: number | null;
@@ -53,7 +54,7 @@ const Commentary = ({ time, jumpStart }: CommentaryProps) => {
       <div className="flex items-center gap-3 mb-4">
         <Icon className={`w-8 h-8 ${commentary.color}`} />
         <div>
-          <h3 className="text-2xl font-bold text-foreground">{time} ms</h3>
+          <h3 className="text-2xl font-bold text-foreground font-mono">{formatTime(time)}</h3>
           <p className={`${commentary.color} font-semibold`}>{commentary.text}</p>
         </div>
       </div>
