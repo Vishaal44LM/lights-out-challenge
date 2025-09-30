@@ -94,12 +94,6 @@ const Index = () => {
       <div className="max-w-4xl w-full space-y-8">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Flag className="w-10 h-10 text-primary" />
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground tracking-tight">
-              TEST
-            </h1>
-          </div>
           <p className="text-xl text-muted-foreground">
             {gameState === "countdown" && "Wait for the lights..."}
             {gameState === "ready" && "⚡ LIGHTS OUT! Click now! ⚡"}
@@ -122,7 +116,7 @@ const Index = () => {
               }}
               className="text-xl px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-all"
             >
-              {gameState === "waiting" ? "START" : "TRY AGAIN"}
+              {gameState === "waiting" ? "LIGHTS OUT" : "TRY AGAIN"}
             </Button>
           </div>
         )}
