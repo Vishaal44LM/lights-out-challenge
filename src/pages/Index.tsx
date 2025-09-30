@@ -132,7 +132,7 @@ const Index = () => {
 
         {/* Results Table */}
         {attempts.length > 0 && (
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-32">
             <div className="w-full max-w-md">
               <ResultsTable attempts={attempts} bestTime={bestTime} />
             </div>
