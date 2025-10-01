@@ -1,13 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import StartLights from "@/components/StartLights";
-import ResultsTable from "@/components/ResultsTable";
 import Commentary from "@/components/Commentary";
-import { Flag } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 
 type GameState = "waiting" | "countdown" | "ready" | "reacted" | "jumpStart";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [gameState, setGameState] = useState<GameState>("waiting");
   const [activeLights, setActiveLights] = useState(0);
   const [allOut, setAllOut] = useState(false);
@@ -43,6 +44,7 @@ const Index = () => {
       // Update attempts
       const newAttempts = [reaction, ...attempts].slice(0, 5);
       setAttempts(newAttempts);
+      localStorage.setItem("f1Attempts", JSON.stringify(newAttempts));
 
       // Update best time
       if (bestTime === null || reaction < bestTime) {
@@ -91,6 +93,20 @@ const Index = () => {
       className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8"
       onClick={handleClick}
     >
+      <div className="absolute top-4 right-4">
+        <Button
+          variant="outline"
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/results");
+          }}
+          className="gap-2"
+        >
+          <BarChart3 className="w-4 h-4" />
+          View Results
+        </Button>
+      </div>
+
       <div className="max-w-4xl w-full space-y-8">
         {/* Header */}
         <div className="text-center space-y-2">
@@ -126,15 +142,6 @@ const Index = () => {
           <div className="flex justify-center">
             <div className="w-full max-w-md">
               <Commentary time={reactionTime} jumpStart={jumpStart} />
-            </div>
-          </div>
-        )}
-
-        {/* Results Table */}
-        {attempts.length > 0 && (
-          <div className="flex justify-center mt-32">
-            <div className="w-full max-w-md">
-              <ResultsTable attempts={attempts} bestTime={bestTime} />
             </div>
           </div>
         )}
