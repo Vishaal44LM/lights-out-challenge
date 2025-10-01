@@ -108,16 +108,6 @@ const Index = () => {
       </div>
 
       <div className="max-w-4xl w-full space-y-8">
-        {/* Header */}
-        <div className="text-center space-y-2">
-          <p className="text-xl text-muted-foreground">
-            {gameState === "countdown" && "Wait for the lights..."}
-            {gameState === "ready" && "⚡ LIGHTS OUT! Click now! ⚡"}
-            {gameState === "reacted" && "Great reaction!"}
-            {gameState === "jumpStart" && "Jump Start - Too Early!"}
-          </p>
-        </div>
-
         {/* Start Lights */}
         <StartLights activeLights={activeLights} allOut={allOut} />
 
